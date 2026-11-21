@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Bitcoin (BTC) price, chart, market stats and your transaction history on CryptoTrack." />
+    <title data-i18n="meta.detailsTitle">CryptoTrack — Bitcoin (BTC) Details</title>
+  </head>
+  <body class="page page--details">
+    <%- include('src/partials/header.ejs', { page: 'details' }) %>
+    <% const btc = coins[0]; %>
+
+    <main class="main" id="main-content">
+      <article class="asset" itemscope itemtype="https://schema.org/Product">
+        <meta itemprop="sku" content="<%= btc.symbol %>" />
+        <meta itemprop="category" content="Cryptocurrency" />
+
+        <header class="asset-hero">
+          <div class="asset-hero__title-wrap">
+            <picture class="asset-hero__logo">
+              <source
+                type="image/webp"
+                srcset="./images/btc-32.webp 32w, ./images/btc-64.webp 64w, ./images/btc-128.webp 128w"
+                sizes="(min-width: 1280px) 64px, 48px"
+              />
+              <img
+                itemprop="image"
+                src="./images/btc-64.png"
+                srcset="./images/btc-32.png 32w, ./images/btc-64.png 64w, ./images/btc-128.png 128w"
+                sizes="(min-width: 1280px) 64px, 48px"
+                width="64"
+                height="64"
+                alt="Bitcoin logo"
+                data-i18n-alt="coin.btc.logo"
+              />
+            </picture>
+            <h1 class="asset-hero__title"><span itemprop="name"><%= btc.name %></span> (<%= btc.symbol %>)</h1>
+          </div>
+
+          <p class="asset-hero__description visually-hidden" itemprop="description" data-i18n="details.btcDescription">
+            Bitcoin is the first decentralized cryptocurrency, running on a peer-to-peer proof-of-work network.
+          </p>
+
+          <div class="asset-hero__price-wrap" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="USD" />
+            <p class="asset-hero__price">
+              <data itemprop="price" value="<%= btc.priceValue %>">$<%= btc.price %></data>
+            </p>
+            <p class="asset-hero__change asset-hero__change--<%= btc.trend %>">
+              <span class="visually-hidden" data-i18n="common.change24h">24h change:</span> <%= btc.change %>
+            </p>
+          </div>
+
+          <div class="asset-hero__actions">
+            <button type="button" class="btn btn--primary" data-i18n="btn.trade">Trade</button>
+            <button type="button" class="btn btn--outline" aria-pressed="false" data-i18n="btn.addToWatchlist">+ Add to Watchlist</button>
+          </div>
+        </header>
+
+        <div class="asset__layout">
+          <section class="asset-chart" aria-labelledby="chart-title">
+            <h2 id="chart-title" class="section-title visually-hidden" data-i18n="details.priceChart">Price chart</h2>
+
+            <div class="timeframe-group" role="group" aria-label="Chart timeframe" data-i18n-aria-label="details.timeframe">
+              <button type="button" class="timeframe-group__btn timeframe-group__btn--active" aria-pressed="true">1D</button>
+              <button type="button" class="timeframe-group__btn" aria-pressed="false">1W</button>
+              <button type="button" class="timeframe-group__btn" aria-pressed="false">1M</button>
+              <button type="button" class="timeframe-group__btn" aria-pressed="false">1Y</button>
+              <button type="button" class="timeframe-group__btn" aria-pressed="false" data-i18n="filter.all">All</button>
+            </div>
+
+            <figure class="asset-chart__figure">
+              <svg viewBox="0 0 500 150" width="500" height="150" class="asset-chart__svg" role="img" aria-labelledby="chart-caption" focusable="false">
+                <polyline
+                  class="asset-chart__line asset-chart__line--positive"
+                  points="0,130 50,110 100,70 150,90 200,40 250,140 300,135 350,100 400,95 450,60 500,75"
+                  fill="none"
+                  stroke="#10B981"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <figcaption id="chart-caption" class="asset-chart__caption visually-hidden" data-i18n="details.chartCaption">
+                Bitcoin price over the last 24 hours, from $63,800 to $65,100.
+              </figcaption>
+            </figure>
+          </section>
+
+          <aside class="market-stats" aria-labelledby="market-stats-title">
+            <h2 id="market-stats-title" class="section-title" data-i18n="details.marketStats">Market Stats</h2>
+            <dl class="market-stats__list">
+              <div class="market-stats__row">
+                <dt class="market-stats__label" data-i18n="table.marketCap">Market Cap</dt>
+                <dd class="market-stats__value"><%= btc.marketCap %></dd>
+              </div>
+              <div class="market-stats__row">
+                <dt class="market-stats__label" data-i18n="details.tradingVolume">24h Trading Vol</dt>
+                <dd class="market-stats__value"><%= btc.volume %></dd>
+              </div>
+              <div class="market-stats__row">
+                <dt class="market-stats__label" data-i18n="details.highLow">24h High / Low</dt>
+                <dd class="market-stats__value">$65,100 / $63,800</dd>
+              </div>
+              <div class="market-stats__row">
+                <dt class="market-stats__label" data-i18n="details.allTimeHigh">All-Time High</dt>
+                <dd class="market-stats__value">$73,750.07</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+
+        <section class="transaction-history" aria-labelledby="history-title">
+          <h2 id="history-title" class="section-title" data-i18n="details.history">Bitcoin Transaction History</h2>
+          <ul class="history-list">
+            <li class="history-item">
+              <div class="history-item__amount">
+                <p class="history-item__crypto history-item__crypto--positive">+0.05 BTC</p>
+                <p class="history-item__fiat">+$3,212.50</p>
+              </div>
+              <span class="history-item__icon history-item__icon--buy" aria-hidden="true">↓</span>
+              <div class="history-item__details">
+                <p class="history-item__type"><strong data-i18n="activity.boughtBitcoin">Bought Bitcoin</strong></p>
+                <time class="history-item__time" datetime="2026-10-12T14:32">Today, 14:32</time>
+              </div>
+            </li>
+            <li class="history-item">
+              <div class="history-item__amount">
+                <p class="history-item__crypto history-item__crypto--positive">+0.02 BTC</p>
+                <p class="history-item__fiat">+$1,285.00</p>
+              </div>
+              <span class="history-item__icon history-item__icon--buy" aria-hidden="true">↓</span>
+              <div class="history-item__details">
+                <p class="history-item__type"><strong data-i18n="activity.boughtBitcoin">Bought Bitcoin</strong></p>
+                <time class="history-item__time" datetime="2026-09-24">24 Sep 2026</time>
+              </div>
+            </li>
+            <li class="history-item">
+              <div class="history-item__amount">
+                <p class="history-item__crypto history-item__crypto--negative">-0.10 BTC</p>
+                <p class="history-item__fiat">-$6,425.00</p>
+              </div>
+              <span class="history-item__icon history-item__icon--sell" aria-hidden="true">↑</span>
+              <div class="history-item__details">
+                <p class="history-item__type"><strong data-i18n="activity.soldBitcoin">Sold Bitcoin</strong></p>
+                <time class="history-item__time" datetime="2026-09-18">18 Sep 2026</time>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <%- include('src/partials/footer.ejs') %>
+  </body>
+</html>

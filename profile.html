@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Manage your CryptoTrack account: personal information, security, notifications and API keys." />
+    <title data-i18n="meta.profileTitle">CryptoTrack — Account Settings</title>
+  </head>
+  <body class="page page--profile">
+    <%- include('src/partials/header.ejs', { page: 'profile' }) %>
+
+    <main class="main" id="main-content">
+      <h1 class="main__title" data-i18n="profile.title">Account Settings</h1>
+
+      <div class="profile-layout">
+        <aside class="profile-sidebar" aria-label="User account summary" data-i18n-aria-label="profile.sidebarLabel">
+          <section class="user-card" aria-labelledby="user-card-name">
+            <picture class="user-card__avatar">
+              <source type="image/webp" srcset="./images/avatar-48.webp 1x, ./images/avatar-96.webp 2x" />
+              <img
+                class="user-card__avatar-img"
+                src="./images/avatar-48.png"
+                srcset="./images/avatar-48.png 1x, ./images/avatar-96.png 2x"
+                width="48"
+                height="48"
+                alt="Denys Mokhyr profile picture"
+                data-i18n-alt="profile.avatarAlt"
+              />
+            </picture>
+            <h2 id="user-card-name" class="user-card__name">Denys Mokhyr</h2>
+            <p class="user-card__email">denys.mokhyr@example.com</p>
+            <p class="user-card__badge badge badge--success" data-i18n="profile.verified">Verified</p>
+          </section>
+
+          <nav class="profile-nav" aria-label="Settings sections" data-i18n-aria-label="profile.navLabel">
+            <ul class="profile-nav__list">
+              <li class="profile-nav__item">
+                <a href="#general" class="profile-nav__link profile-nav__link--active" data-i18n="profile.navGeneral">General</a>
+              </li>
+              <li class="profile-nav__item">
+                <a href="#security" class="profile-nav__link" data-i18n="profile.navSecurity">Security &amp; 2FA</a>
+              </li>
+              <li class="profile-nav__item">
+                <a href="#notifications" class="profile-nav__link" data-i18n="profile.navNotifications">Notifications</a>
+              </li>
+              <li class="profile-nav__item">
+                <a href="#api" class="profile-nav__link" data-i18n="profile.navApi">API Keys &amp; Wallets</a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+
+        <div class="profile-content">
+          <section class="settings-panel" id="general" aria-labelledby="general-title">
+            <h2 id="general-title" class="settings-panel__title" data-i18n="profile.personalInfo">Personal Information</h2>
+            <p class="settings-panel__subtitle" data-i18n="profile.personalInfoHint">
+              Update your personal details and personal profile.
+            </p>
+
+            <form class="form" action="./profile.html" method="post">
+              <div class="form__field">
+                <label for="full-name" class="form__label" data-i18n="form.fullName">Full Name</label>
+                <input type="text" id="full-name" name="fullName" class="form__input" value="Denys Mokhyr" autocomplete="name" required />
+              </div>
+
+              <div class="form__field">
+                <label for="user-email" class="form__label" data-i18n="form.email">Email Address</label>
+                <input type="email" id="user-email" name="email" class="form__input" value="denys.mokhyr@example.com" autocomplete="email" required />
+              </div>
+
+              <div class="form__field">
+                <label for="base-currency" class="form__label" data-i18n="form.baseCurrency">Base Currency</label>
+                <select id="base-currency" name="baseCurrency" class="form__select">
+                  <option value="USD" selected>USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="UAH">UAH (₴)</option>
+                  <option value="BTC">BTC (₿)</option>
+                </select>
+              </div>
+
+              <div class="form__field">
+                <label for="time-zone" class="form__label" data-i18n="form.timeZone">Time Zone</label>
+                <select id="time-zone" name="timeZone" class="form__select">
+                  <option value="Europe/London">UTC+0:00 London</option>
+                  <option value="Europe/Berlin">UTC+1:00 Berlin</option>
+                  <option value="Europe/Kyiv" selected>UTC+2:00 Kyiv</option>
+                  <option value="America/New_York">UTC−5:00 New York</option>
+                </select>
+              </div>
+
+              <div class="form__actions">
+                <button type="submit" class="btn btn--primary" data-i18n="btn.save">Save Changes</button>
+                <button type="reset" class="btn btn--ghost" data-i18n="btn.cancel">Cancel</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="settings-panel" id="security" aria-labelledby="security-title">
+            <h2 id="security-title" class="settings-panel__title" data-i18n="profile.navSecurity">Security &amp; 2FA</h2>
+            <form class="form" action="./profile.html" method="post">
+              <div class="form__field form__field--checkbox">
+                <input type="checkbox" id="two-factor" name="twoFactor" class="form__checkbox" checked />
+                <label for="two-factor" class="form__label" data-i18n="form.twoFactor">Enable two-factor authentication (2FA)</label>
+              </div>
+              <div class="form__actions">
+                <button type="submit" class="btn btn--primary" data-i18n="btn.save">Save Changes</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="settings-panel" id="notifications" aria-labelledby="notifications-title">
+            <h2 id="notifications-title" class="settings-panel__title" data-i18n="profile.navNotifications">Notifications</h2>
+            <form class="form" action="./profile.html" method="post">
+              <fieldset class="form__group">
+                <legend class="form__legend" data-i18n="form.emailAlerts">Email alerts</legend>
+                <div class="form__field form__field--checkbox">
+                  <input type="checkbox" id="volatility-alerts" name="volatilityAlerts" class="form__checkbox" checked />
+                  <label for="volatility-alerts" class="form__label" data-i18n="form.volatilityAlerts">Market volatility alerts</label>
+                </div>
+                <div class="form__field form__field--checkbox">
+                  <input type="checkbox" id="weekly-report" name="weeklyReport" class="form__checkbox" />
+                  <label for="weekly-report" class="form__label" data-i18n="form.weeklyReport">Weekly portfolio report</label>
+                </div>
+              </fieldset>
+              <div class="form__actions">
+                <button type="submit" class="btn btn--primary" data-i18n="btn.save">Save Changes</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="settings-panel" id="api" aria-labelledby="api-title">
+            <h2 id="api-title" class="settings-panel__title" data-i18n="profile.navApi">API Keys &amp; Wallets</h2>
+            <table class="wallets-table">
+              <caption class="wallets-table__caption" data-i18n="profile.walletsCaption">Connected wallets</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="wallets-table__th" data-i18n="table.wallet">Wallet</th>
+                  <th scope="col" class="wallets-table__th" data-i18n="table.network">Network</th>
+                  <th scope="col" class="wallets-table__th" data-i18n="table.connected">Connected</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="wallets-table__td">MetaMask</th>
+                  <td class="wallets-table__td">Ethereum</td>
+                  <td class="wallets-table__td"><time datetime="2026-08-14">14 Aug 2026</time></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="wallets-table__td">Phantom</th>
+                  <td class="wallets-table__td">Solana</td>
+                  <td class="wallets-table__td"><time datetime="2026-09-02">2 Sep 2026</time></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <%- include('src/partials/footer.ejs') %>
+  </body>
+</html>

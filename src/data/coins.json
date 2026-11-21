@@ -1,0 +1,7 @@
+[
+  { "id": "btc", "rank": 1, "name": "Bitcoin", "symbol": "BTC", "category": "layer-1", "price": "64,250.00", "priceValue": "64250.00", "change": "+2.45%", "trend": "positive", "volume": "$32.4B", "marketCap": "$1.26T", "sparkline": "0,22 10,18 20,20 30,12 40,14 50,6 60,9 70,4" },
+  { "id": "eth", "rank": 2, "name": "Ethereum", "symbol": "ETH", "category": "layer-1", "price": "3,480.20", "priceValue": "3480.20", "change": "+1.80%", "trend": "positive", "volume": "$15.1B", "marketCap": "$418.2B", "sparkline": "0,20 10,21 20,15 30,17 40,10 50,12 60,7 70,8" },
+  { "id": "sol", "rank": 3, "name": "Solana", "symbol": "SOL", "category": "layer-1", "price": "148.50", "priceValue": "148.50", "change": "-3.15%", "trend": "negative", "volume": "$2.9B", "marketCap": "$68.7B", "sparkline": "0,6 10,8 20,5 30,12 40,10 50,16 60,15 70,20" },
+  { "id": "uni", "rank": 4, "name": "Uniswap", "symbol": "UNI", "category": "defi", "price": "9.84", "priceValue": "9.84", "change": "+0.92%", "trend": "positive", "volume": "$214.6M", "marketCap": "$5.9B", "sparkline": "0,16 10,14 20,15 30,11 40,12 50,10 60,11 70,8" },
+  { "id": "mana", "rank": 5, "name": "Decentraland", "symbol": "MANA", "category": "nft", "price": "0.47", "priceValue": "0.47", "change": "-1.24%", "trend": "negative", "volume": "$58.3M", "marketCap": "$903.5M", "sparkline": "0,9 10,10 20,8 30,13 40,12 50,15 60,14 70,17" }
+]

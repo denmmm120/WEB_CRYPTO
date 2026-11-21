@@ -1,0 +1,57 @@
+<%# Site header. Param: page ('dashboard' | 'assets' | 'details' | 'profile') -%>
+<% const links = [
+  { id: 'dashboard', href: './index.html', label: 'Dashboard', key: 'nav.dashboard' },
+  { id: 'assets', href: './assets.html', label: 'Assets', key: 'nav.assets' },
+  { id: 'details', href: './asset-details.html', label: 'Asset Details', key: 'nav.details' },
+  { id: 'profile', href: './profile.html', label: 'Profile', key: 'nav.profile' },
+]; -%>
+<a href="#main-content" class="skip-link" data-i18n="a11y.skipToContent">Skip to main content</a>
+
+<header class="header">
+  <a href="./index.html" class="header__logo" data-i18n="brand.name">CryptoTrack</a>
+
+  <button
+    type="button"
+    class="header__menu-toggle"
+    aria-expanded="false"
+    aria-controls="main-nav"
+    aria-label="Open navigation menu"
+    data-i18n-aria-label="nav.openMenu"
+  >
+    <span class="header__menu-icon" aria-hidden="true"></span>
+  </button>
+
+  <nav class="nav" id="main-nav" aria-label="Main navigation" data-i18n-aria-label="nav.mainLabel">
+    <ul class="nav__list">
+      <% links.forEach((link) => { %>
+      <li class="nav__item">
+        <a
+          href="<%= link.href %>"
+          class="nav__link<%= link.id === page ? ' nav__link--active' : '' %>"
+          <% if (link.id === page) { %>aria-current="page"<% } %>
+          data-i18n="<%= link.key %>"
+        ><%= link.label %></a>
+      </li>
+      <% }) %>
+    </ul>
+  </nav>
+
+  <div class="header__actions">
+    <button type="button" class="btn btn--primary header__add-btn" data-i18n="btn.addTransaction">
+      + Add Transaction
+    </button>
+    <a href="./profile.html" class="header__avatar" aria-label="User profile: Denys Mokhyr" data-i18n-aria-label="header.profileLink">
+      <picture class="header__avatar-picture">
+        <source type="image/webp" srcset="./images/avatar-48.webp 1x, ./images/avatar-96.webp 2x" />
+        <img
+          class="header__avatar-img"
+          src="./images/avatar-48.png"
+          srcset="./images/avatar-48.png 1x, ./images/avatar-96.png 2x"
+          width="40"
+          height="40"
+          alt=""
+        />
+      </picture>
+    </a>
+  </div>
+</header>

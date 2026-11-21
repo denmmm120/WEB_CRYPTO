@@ -1,0 +1,37 @@
+<%# Watchlist card with schema.org/Product microdata. Param: coin -%>
+<article class="crypto-card" itemscope itemtype="https://schema.org/Product">
+  <header class="crypto-card__header">
+    <%- include('src/partials/coin-logo.ejs', { coin, size: 32, cls: 'crypto-card__logo' }) %>
+    <link itemprop="image" href="./images/<%= coin.id %>-128.png" />
+    <div class="crypto-card__meta">
+      <h3 class="crypto-card__title">
+        <a href="./asset-details.html?coin=<%= coin.id %>" class="crypto-card__link" itemprop="url">
+          <span itemprop="name"><%= coin.name %></span>
+        </a>
+      </h3>
+      <p class="crypto-card__ticker" itemprop="sku"><%= coin.symbol %></p>
+    </div>
+  </header>
+
+  <svg class="crypto-card__sparkline crypto-card__sparkline--<%= coin.trend %>" viewBox="0 0 70 24" width="70" height="24" aria-hidden="true" focusable="false">
+    <polyline
+      class="crypto-card__sparkline-line"
+      points="<%= coin.sparkline %>"
+      fill="none"
+      stroke="<%= coin.trend === 'positive' ? '#10B981' : '#EF4444' %>"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+
+  <div class="crypto-card__body" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+    <meta itemprop="priceCurrency" content="USD" />
+    <p class="crypto-card__price">
+      <data itemprop="price" value="<%= coin.priceValue %>">$<%= coin.price %></data>
+    </p>
+    <p class="crypto-card__change crypto-card__change--<%= coin.trend %>">
+      <span class="visually-hidden" data-i18n="common.change24h">24h change:</span> <%= coin.change %>
+    </p>
+  </div>
+</article>

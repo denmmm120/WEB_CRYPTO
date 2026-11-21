@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="All crypto assets tracked by CryptoTrack: prices, 24h change, volume and market cap." />
+    <title data-i18n="meta.assetsTitle">CryptoTrack — Assets</title>
+  </head>
+  <body class="page page--assets">
+    <%- include('src/partials/header.ejs', { page: 'assets' }) %>
+
+    <main class="main" id="main-content">
+      <h1 class="main__title" data-i18n="assets.title">All Crypto Assets</h1>
+
+      <section class="assets-toolbar" aria-label="Search and filters" data-i18n-aria-label="assets.toolbarLabel">
+        <form class="search-form" role="search" action="./assets.html" method="get">
+          <label for="asset-search" class="search-form__label visually-hidden" data-i18n="assets.searchLabel">Search assets</label>
+          <input
+            type="search"
+            id="asset-search"
+            name="q"
+            class="search-form__input"
+            placeholder="Search by coin name or symbol..."
+            data-i18n-placeholder="assets.searchPlaceholder"
+            autocomplete="off"
+          />
+          <button type="submit" class="search-form__submit visually-hidden" data-i18n="btn.search">Search</button>
+        </form>
+
+        <div class="filter-group" role="group" aria-label="Filter by category" data-i18n-aria-label="assets.filterLabel">
+          <button type="button" class="filter-group__btn filter-group__btn--active" aria-pressed="true" data-filter="all" data-i18n="filter.all">All</button>
+          <button type="button" class="filter-group__btn" aria-pressed="false" data-filter="layer-1" data-i18n="filter.layer1">Layer 1</button>
+          <button type="button" class="filter-group__btn" aria-pressed="false" data-filter="defi" data-i18n="filter.defi">DeFi</button>
+          <button type="button" class="filter-group__btn" aria-pressed="false" data-filter="nft" data-i18n="filter.nft">NFT / Metaverse</button>
+        </div>
+      </section>
+
+      <section class="assets-market" aria-labelledby="assets-table-caption">
+        <table class="assets-table">
+          <caption id="assets-table-caption" class="assets-table__caption visually-hidden" data-i18n="assets.tableCaption">
+            Cryptocurrency market assets
+          </caption>
+
+          <thead class="assets-table__head">
+            <tr>
+              <th scope="col" class="assets-table__th">#</th>
+              <th scope="col" class="assets-table__th" data-i18n="table.asset">Asset</th>
+              <th scope="col" class="assets-table__th" data-i18n="table.price">Price</th>
+              <th scope="col" class="assets-table__th" data-i18n="table.change24h">24h Change</th>
+              <th scope="col" class="assets-table__th" data-i18n="table.volume24h">24h Volume</th>
+              <th scope="col" class="assets-table__th" data-i18n="table.marketCap">Market Cap</th>
+              <th scope="col" class="assets-table__th" data-i18n="table.action">Action</th>
+            </tr>
+          </thead>
+
+          <tbody class="assets-table__body">
+            <% coins.forEach((coin) => { %>
+            <tr class="assets-table__row" data-category="<%= coin.category %>">
+              <td class="assets-table__td"><%= coin.rank %></td>
+              <th scope="row" class="assets-table__td assets-table__asset">
+                <%- include('src/partials/coin-logo.ejs', { coin, size: 32, cls: 'assets-table__logo' }) %>
+                <a href="./asset-details.html?coin=<%= coin.id %>" class="assets-table__link"><%= coin.name %> (<%= coin.symbol %>)</a>
+              </th>
+              <td class="assets-table__td"><data value="<%= coin.priceValue %>">$<%= coin.price %></data></td>
+              <td class="assets-table__td assets-table__change assets-table__change--<%= coin.trend %>"><%= coin.change %></td>
+              <td class="assets-table__td"><%= coin.volume %></td>
+              <td class="assets-table__td"><%= coin.marketCap %></td>
+              <td class="assets-table__td">
+                <button
+                  type="button"
+                  class="btn btn--primary btn--small"
+                  aria-label="Trade <%= coin.name %>"
+                  data-i18n="btn.trade"
+                  data-i18n-aria-label="btn.tradeCoin"
+                  data-i18n-params='{"coin": "<%= coin.name %>"}'
+                >Trade</button>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <%- include('src/partials/footer.ejs') %>
+  </body>
+</html>

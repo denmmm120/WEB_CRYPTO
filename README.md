@@ -56,7 +56,7 @@ src/
     main.js
   index.html
 vite.config.js
-.eslintrc.cjs
+eslint.config.js
 DEVLOG.md
 Prompts.md
 ```

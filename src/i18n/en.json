@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "dashboardTitle": "CryptoTrack — Dashboard",
+    "assetsTitle": "CryptoTrack — Assets",
+    "detailsTitle": "CryptoTrack — Bitcoin (BTC) Details",
+    "profileTitle": "CryptoTrack — Account Settings"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content"
+  },
+  "brand": {
+    "name": "CryptoTrack"
+  },
+  "nav": {
+    "mainLabel": "Main navigation",
+    "openMenu": "Open navigation menu",
+    "dashboard": "Dashboard",
+    "assets": "Assets",
+    "details": "Asset Details",
+    "profile": "Profile"
+  },
+  "header": {
+    "profileLink": "User profile: Denys Mokhyr"
+  },
+  "btn": {
+    "addTransaction": "+ Add Transaction",
+    "deposit": "Deposit",
+    "withdraw": "Withdraw",
+    "trade": "Trade",
+    "tradeCoin": "Trade {coin}",
+    "addToWatchlist": "+ Add to Watchlist",
+    "search": "Search",
+    "save": "Save Changes",
+    "cancel": "Cancel"
+  },
+  "common": {
+    "change24h": "24h change:"
+  },
+  "coin": {
+    "btc": { "logo": "Bitcoin logo" },
+    "eth": { "logo": "Ethereum logo" },
+    "sol": { "logo": "Solana logo" },
+    "uni": { "logo": "Uniswap logo" },
+    "mana": { "logo": "Decentraland logo" }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "totalBalance": "Total Portfolio Balance",
+    "past24h": "Past 24h",
+    "watchlist": "Market Watchlist",
+    "recentActivity": "Recent Activity"
+  },
+  "activity": {
+    "boughtBitcoin": "Bought Bitcoin",
+    "soldBitcoin": "Sold Bitcoin",
+    "soldEthereum": "Sold Ethereum",
+    "boughtSolana": "Bought Solana"
+  },
+  "assets": {
+    "title": "All Crypto Assets",
+    "toolbarLabel": "Search and filters",
+    "searchLabel": "Search assets",
+    "searchPlaceholder": "Search by coin name or symbol...",
+    "filterLabel": "Filter by category",
+    "tableCaption": "Cryptocurrency market assets"
+  },
+  "filter": {
+    "all": "All",
+    "layer1": "Layer 1",
+    "defi": "DeFi",
+    "nft": "NFT / Metaverse"
+  },
+  "table": {
+    "asset": "Asset",
+    "price": "Price",
+    "change24h": "24h Change",
+    "volume24h": "24h Volume",
+    "marketCap": "Market Cap",
+    "action": "Action",
+    "wallet": "Wallet",
+    "network": "Network",
+    "connected": "Connected"
+  },
+  "details": {
+    "btcDescription": "Bitcoin is the first decentralized cryptocurrency, running on a peer-to-peer proof-of-work network.",
+    "priceChart": "Price chart",
+    "timeframe": "Chart timeframe",
+    "chartCaption": "Bitcoin price over the last 24 hours, from $63,800 to $65,100.",
+    "marketStats": "Market Stats",
+    "tradingVolume": "24h Trading Vol",
+    "highLow": "24h High / Low",
+    "allTimeHigh": "All-Time High",
+    "history": "Bitcoin Transaction History"
+  },
+  "profile": {
+    "title": "Account Settings",
+    "sidebarLabel": "User account summary",
+    "avatarAlt": "Denys Mokhyr profile picture",
+    "verified": "Verified",
+    "navLabel": "Settings sections",
+    "navGeneral": "General",
+    "navSecurity": "Security & 2FA",
+    "navNotifications": "Notifications",
+    "navApi": "API Keys & Wallets",
+    "personalInfo": "Personal Information",
+    "personalInfoHint": "Update your personal details and personal profile.",
+    "walletsCaption": "Connected wallets"
+  },
+  "form": {
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "baseCurrency": "Base Currency",
+    "timeZone": "Time Zone",
+    "twoFactor": "Enable two-factor authentication (2FA)",
+    "emailAlerts": "Email alerts",
+    "volatilityAlerts": "Market volatility alerts",
+    "weeklyReport": "Weekly portfolio report"
+  },
+  "footer": {
+    "copyright": "CryptoTrack. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "privacyText": "CryptoTrack is a demo portfolio tracker. Your data is stored locally and is never shared with third parties.",
+    "terms": "Terms of Service",
+    "termsText": "Prices are for demonstration only and are not financial advice. No real trades are executed.",
+    "support": "Support"
+  }
+}

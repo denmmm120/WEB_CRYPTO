@@ -1,0 +1,15 @@
+<%# Responsive coin logo. Params: coin, size (CSS px, default 32), cls (BEM class), alt (optional, empty = decorative) -%>
+<% const s = typeof size !== 'undefined' ? size : 32; const s2 = s * 2; -%>
+<picture class="<%= cls %>">
+  <source type="image/webp" srcset="./images/<%= coin.id %>-<%= s %>.webp 1x, ./images/<%= coin.id %>-<%= s2 %>.webp 2x" />
+  <img
+    src="./images/<%= coin.id %>-<%= s %>.png"
+    srcset="./images/<%= coin.id %>-<%= s %>.png 1x, ./images/<%= coin.id %>-<%= s2 %>.png 2x"
+    width="<%= s %>"
+    height="<%= s %>"
+    alt="<%= typeof alt !== 'undefined' ? alt : '' %>"
+    <% if (typeof alt !== 'undefined' && alt) { %>data-i18n-alt="coin.<%= coin.id %>.logo"<% } %>
+    loading="lazy"
+    decoding="async"
+  />
+</picture>

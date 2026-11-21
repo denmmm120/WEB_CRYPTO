@@ -1,23 +1,84 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Labs Starter</title>
-</head>
-<body>
-  <header class="u-header">
-    <nav class="u-nav">
-      <a href="#" class="u-logo">MySite</a>
-      <ul class="u-menu">
-        <li><a href="#/home">Home</a></li>
-        <li><a href="#/list">List</a></li>
-        <li><a href="#/about">About</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main id="app"></main>
-  <footer class="u-footer">© 2025</footer>
-  <script type="module" src="/src/js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CryptoTrack dashboard: portfolio balance, market watchlist and recent activity." />
+    <title data-i18n="meta.dashboardTitle">CryptoTrack — Dashboard</title>
+  </head>
+  <body class="page page--dashboard">
+    <%- include('src/partials/header.ejs', { page: 'dashboard' }) %>
+
+    <main class="main" id="main-content">
+      <h1 class="main__title visually-hidden" data-i18n="dashboard.title">Dashboard</h1>
+
+      <section class="portfolio-summary" aria-labelledby="portfolio-heading">
+        <h2 id="portfolio-heading" class="portfolio-summary__label" data-i18n="dashboard.totalBalance">Total Portfolio Balance</h2>
+        <p class="portfolio-summary__amount"><data value="124580.40">$124,580.40</data></p>
+        <p class="portfolio-summary__change portfolio-summary__change--positive">
+          +$4,210.15 (+3.48%)
+          <span class="portfolio-summary__period" data-i18n="dashboard.past24h">Past 24h</span>
+        </p>
+
+        <div class="portfolio-summary__actions">
+          <button type="button" class="btn btn--accent" data-i18n="btn.deposit">Deposit</button>
+          <button type="button" class="btn btn--outline" data-i18n="btn.withdraw">Withdraw</button>
+        </div>
+      </section>
+
+      <section class="watchlist" aria-labelledby="watchlist-heading">
+        <h2 id="watchlist-heading" class="section-title" data-i18n="dashboard.watchlist">Market Watchlist</h2>
+
+        <div class="watchlist__grid">
+          <% coins.slice(0, 3).forEach((coin) => { %>
+          <%- include('src/partials/crypto-card.ejs', { coin }) %>
+          <% }) %>
+        </div>
+      </section>
+
+      <section class="activity" aria-labelledby="activity-heading">
+        <h2 id="activity-heading" class="section-title" data-i18n="dashboard.recentActivity">Recent Activity</h2>
+
+        <ul class="activity__list">
+          <li class="activity-item">
+            <span class="activity-item__icon activity-item__icon--buy" aria-hidden="true">↓</span>
+            <div class="activity-item__details">
+              <p class="activity-item__title"><strong data-i18n="activity.boughtBitcoin">Bought Bitcoin</strong></p>
+              <time class="activity-item__time" datetime="2026-10-08T14:32">Today, 14:32</time>
+            </div>
+            <div class="activity-item__values">
+              <p class="activity-item__crypto activity-item__crypto--positive">+0.05 BTC</p>
+              <p class="activity-item__fiat">+$3,212.50</p>
+            </div>
+          </li>
+
+          <li class="activity-item">
+            <span class="activity-item__icon activity-item__icon--sell" aria-hidden="true">↑</span>
+            <div class="activity-item__details">
+              <p class="activity-item__title"><strong data-i18n="activity.soldEthereum">Sold Ethereum</strong></p>
+              <time class="activity-item__time" datetime="2026-10-08T09:02">Today, 09:02</time>
+            </div>
+            <div class="activity-item__values">
+              <p class="activity-item__crypto activity-item__crypto--negative">-1.2 ETH</p>
+              <p class="activity-item__fiat">-$4,176.00</p>
+            </div>
+          </li>
+
+          <li class="activity-item">
+            <span class="activity-item__icon activity-item__icon--buy" aria-hidden="true">↓</span>
+            <div class="activity-item__details">
+              <p class="activity-item__title"><strong data-i18n="activity.boughtSolana">Bought Solana</strong></p>
+              <time class="activity-item__time" datetime="2026-10-07T20:06">Yesterday, 20:06</time>
+            </div>
+            <div class="activity-item__values">
+              <p class="activity-item__crypto activity-item__crypto--positive">+12.5 SOL</p>
+              <p class="activity-item__fiat">+$1,782.50</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <%- include('src/partials/footer.ejs') %>
+  </body>
 </html>
